@@ -8,29 +8,37 @@ function formatName(user: User) {
   return user.firstName + " " + user.lastName;
 }
 
-function getElements(user: User) {
-  if (user) {
-    return (
-      <div>
-        <h1>Hello, {formatName(user)}!</h1>;
-        <h2>It is {new Date().toLocaleTimeString()}.</h2>
-        <img alt="gif" width="15%" height="15%" src={user.imageUrl}/>
-      </div>
-    );
+function Welcome(props: { user: User }) {
+  if (props && props.user) {
+    return <h1>Hello, {formatName(props.user)}!</h1>;
   }
   return <h1>Hello, Stranger.</h1>;
 }
 
+const user1 = { firstName: "Jose", lastName: "Correia" };
+const user2 = { firstName: "Pablo", lastName: "Aimar" };
+const user3 = { firstName: "Jonas", lastName: "10" };
+
+function getElements() {
+  return (
+    <div>
+      <div>
+        <Welcome user={user1} />
+        <Welcome user={user2} />
+        <Welcome user={user3} />
+      </div>
+      <h2>It is {new Date().toLocaleTimeString()}.</h2>
+      {/* //<img alt="gif" width="15%" height="15%" src={user.imageUrl} /> */}
+    </div>
+  );
+}
+
 function tick() {
-  const element = getElements({
-    firstName: "Jose",
-    lastName: "Correia",
-    imageUrl: "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2020/07/solar_orbiter_s_first_views_of_the_sun5/22136942-2-eng-GB/Solar_Orbiter_s_first_views_of_the_Sun_pillars.gif"
-  });
-  
+  const element = getElements();
+
   const rootElement = document.getElementById("root");
   //render(<App />, rootElement);
-  
+
   render(element, rootElement);
 }
 
