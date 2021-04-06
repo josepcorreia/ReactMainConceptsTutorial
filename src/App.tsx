@@ -1,10 +1,28 @@
 import "./styles.css";
+import React from "react";
+import { User } from "./types";
+import Clock from "./Clock";
+
+const user = { firstName: "Jose", lastName: "Correia" };
 
 export default function App() {
   return (
-    <div className="App">
-      <h1>Hello CodeSandbox</h1>
-      <h2>Start editing to see some magic happen!</h2>
+    <div>
+      <Welcome user={user} />
+      <Clock />
+      <Clock />
+      <Clock />
     </div>
   );
+}
+
+function formatName(user: User) {
+  return user.firstName + " " + user.lastName;
+}
+
+function Welcome(props: { user: User }) {
+  if (props && props.user) {
+    return <h1>Hello, {formatName(props.user)}!</h1>;
+  }
+  return <h1>Hello, Stranger.</h1>;
 }
