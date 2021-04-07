@@ -4,3 +4,9 @@ export type User = {
   imageUrl: string;
   loggedIn: boolean;
 };
+
+export type Post = {
+  id: number;
+  title: string;
+  content: string;
+};

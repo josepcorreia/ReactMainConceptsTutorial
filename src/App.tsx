@@ -1,7 +1,7 @@
-import "./styles.css";
 import React from "react";
-import Welcome from "./Welcome";
+import LoginControl from "./LoginControl";
+import "./styles.css";
 
 export default function App() {
-  return <Welcome />;
+  return <LoginControl />;
 }

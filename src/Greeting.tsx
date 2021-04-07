@@ -1,9 +1,8 @@
 import "./styles.css";
 import React from "react";
 
-import LoginControl from "./LoginControl";
-import Clock from "./Clock";
 import { User } from "./types";
+import Clock from "./Clock";
 
 function formatName(user: User) {
   return user.firstName + " " + user.lastName;
@@ -17,17 +16,16 @@ function GuestGreeting(props: { user: User }) {
   return <h1>Hello, Stranger. Please sign up.</h1>;
 }
 
-export function Greeting(props: { user: User }) {
-  if (props && props.user && props.user.loggedIn) {
-    return <UserGreeting user={props.user} />;
-  }
-  return <GuestGreeting user={props.user} />;
-}
+export default function Greeting(props: { user: User }) {
+  const loggedOn = props && props.user && props.user.loggedIn;
 
-export default function Welcome() {
   return (
     <div>
-      <LoginControl />
+      {loggedOn ? (
+        <UserGreeting user={props.user} />
+      ) : (
+        <GuestGreeting user={props.user} />
+      )}
       <Clock />
     </div>
   );

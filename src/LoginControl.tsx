@@ -1,6 +1,5 @@
 import "./styles.css";
 import React from "react";
-import { User } from "./types";
 import { LoggedOn } from "./LoggedOn";
 import { LoggedOff } from "./LoggedOff";
 
