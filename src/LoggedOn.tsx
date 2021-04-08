@@ -3,6 +3,7 @@ import Lasers from "./Lasers";
 import Greeting from "./Greeting";
 import Reservation from "./Reservation";
 import BoilingCalculator from "./BoilingCalculator/BoilingCalculator";
+import { WelcomeDialog } from "./Composition/Containment";
 
 import { User } from "./types";
 import { Lists } from "./Lists";
@@ -25,6 +26,7 @@ export function LoggedOn(props: {
     <div>
       <LogoutButton onLogoutClick={props.onLogoutClick} />
       <Greeting user={props.user} />
+      <WelcomeDialog />
       <Lasers />
       <Reservation />
       <BoilingCalculator />

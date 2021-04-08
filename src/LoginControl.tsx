@@ -56,17 +56,13 @@ export default class LoginControl extends React.Component {
     const user = this.state.user;
 
     return isLoggedIn ? (
-      <div>
-        <LoggedOn user={user} onLogoutClick={this.handleLogoutClick} />
-      </div>
+      <LoggedOn user={user} onLogoutClick={this.handleLogoutClick} />
     ) : (
-      <div>
-        <LoggedOff
-          onUserNameChange={this.handleUsernameChange}
-          onPassChange={this.handlePassChange}
-          onUserSubmit={this.handleLoginClick}
-        />
-      </div>
+      <LoggedOff
+        onUserNameChange={this.handleUsernameChange}
+        onPassChange={this.handlePassChange}
+        onUserSubmit={this.handleLoginClick}
+      />
     );
   }
 }
