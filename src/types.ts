@@ -10,3 +10,10 @@ export type Post = {
   title: string;
   content: string;
 };
+
+export type Product = {
+  category: string;
+  price: string;
+  stocked: boolean;
+  name: string;
+};

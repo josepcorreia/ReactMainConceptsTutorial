@@ -1,6 +1,7 @@
 import React from "react";
 import Greeting from "./Greeting";
 import LoginForm from "./LoginForm";
+import FilterableProductTable from "./ThinkingInReact/FilterableProductTable";
 import { User } from "./types";
 
 export function LoggedOff(props: {
@@ -17,6 +18,8 @@ export function LoggedOff(props: {
         onUserSubmit={props.onUserSubmit}
       />
       <Greeting user={props.user} />
+
+      <FilterableProductTable />
     </div>
   );
 }
