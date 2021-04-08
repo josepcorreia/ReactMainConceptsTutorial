@@ -3,14 +3,6 @@ import React from "react";
 import { LoggedOn } from "./LoggedOn";
 import { LoggedOff } from "./LoggedOff";
 
-const user1 = {
-  loggedIn: true,
-  firstName: "Jose",
-  lastName: "Correia",
-  imageUrl:
-    "https://cdn.icon-icons.com/icons2/1070/PNG/512/darth-vader_icon-icons.com_76959.png"
-};
-
 const userOff = {
   loggedIn: false,
   firstName: "",
@@ -18,50 +10,62 @@ const userOff = {
   imageUrl: ""
 };
 
-function LoginButton(props: {
-  onClick:
-    | ((event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void)
-    | undefined;
-}) {
-  return <button onClick={props.onClick}>Login</button>;
-}
-
-function LogoutButton(props: {
-  onClick:
-    | ((event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void)
-    | undefined;
-}) {
-  return <button onClick={props.onClick}>Logout</button>;
-}
-
 export default class LoginControl extends React.Component {
   constructor(props: {} | Readonly<{}>) {
     super(props);
     this.handleLoginClick = this.handleLoginClick.bind(this);
     this.handleLogoutClick = this.handleLogoutClick.bind(this);
-    this.state = { isLoggedIn: false };
+    this.handleLoginClick = this.handleLoginClick.bind(this);
+    this.handleUsernameChange = this.handleUsernameChange.bind(this);
+    this.handlePassChange = this.handlePassChange.bind(this);
+    this.state = {
+      isLoggedIn: false,
+      user: userOff,
+      username: "",
+      password: ""
+    };
   }
 
-  handleLoginClick() {
+  handleLoginClick(e: React.FormEvent<HTMLFormElement>) {
     this.setState({ isLoggedIn: true });
+
+    var user = {
+      loggedIn: true,
+      firstName: this.state.username,
+      lastName: "",
+      imageUrl:
+        "https://cdn.icon-icons.com/icons2/1070/PNG/512/darth-vader_icon-icons.com_76959.png"
+    };
+    this.setState({ user: user });
   }
 
   handleLogoutClick() {
     this.setState({ isLoggedIn: false });
+    this.setState({ user: userOff });
+  }
+
+  handleUsernameChange(e: React.ChangeEvent<HTMLInputElement>) {
+    this.setState({ username: e.target.value });
+  }
+  handlePassChange(e: React.ChangeEvent<HTMLInputElement>) {
+    this.setState({ password: e.target.value });
   }
 
   render() {
     const isLoggedIn = this.state.isLoggedIn;
+    const user = this.state.user;
 
     return isLoggedIn ? (
       <div>
-        <LogoutButton onClick={this.handleLogoutClick} />
-        <LoggedOn user={user1} />
+        <LoggedOn user={user} onLogoutClick={this.handleLogoutClick} />
       </div>
     ) : (
       <div>
-        <LoginButton onClick={this.handleLoginClick} />
-        <LoggedOff user={userOff} />
+        <LoggedOff
+          onUserNameChange={this.handleUsernameChange}
+          onPassChange={this.handlePassChange}
+          onUserSubmit={this.handleLoginClick}
+        />
       </div>
     );
   }

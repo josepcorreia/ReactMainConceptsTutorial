@@ -58,7 +58,6 @@ function Blog(props: { posts: Post[] }) {
   return (
     <div>
       <hr />
-      <hr />
       <h1>Test Blog</h1>
       <Sidebar posts={props.posts} />
       <hr />
