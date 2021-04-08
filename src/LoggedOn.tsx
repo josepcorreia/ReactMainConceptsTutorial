@@ -2,6 +2,7 @@ import React from "react";
 import Lasers from "./Lasers";
 import Greeting from "./Greeting";
 import Reservation from "./Reservation";
+import BoilingCalculator from "./BoilingCalculator/BoilingCalculator";
 
 import { User } from "./types";
 import { Lists } from "./Lists";
@@ -26,6 +27,7 @@ export function LoggedOn(props: {
       <Greeting user={props.user} />
       <Lasers />
       <Reservation />
+      <BoilingCalculator />
       <Lists />
     </div>
   );

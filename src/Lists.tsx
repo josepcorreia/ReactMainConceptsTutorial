@@ -58,7 +58,7 @@ function Blog(props: { posts: Post[] }) {
   return (
     <div>
       <hr />
-      <h1>Test Blog</h1>
+      <h2>Test Blog</h2>
       <Sidebar posts={props.posts} />
       <hr />
       <BlogPost posts={props.posts} />

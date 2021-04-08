@@ -49,6 +49,7 @@ export default class Reservation extends React.Component {
     return (
       <div>
         <hr />
+        <h2> Reservation </h2>
         <form onSubmit={this.handleSubmit}>
           <label>
             Is going:
